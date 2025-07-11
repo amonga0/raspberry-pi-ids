@@ -1,0 +1,26 @@
+Raspberry Pi IDS - Setup Instructions
+
+These steps will get the IDS running on a Raspberry Pi:
+
+1. Clone the repository and navigate to the project root
+	git clone https://github.com/amonga0/raspberry-pi-ids.git
+	cd raspberry-pi-ids
+
+2. Install Dependencies
+	pip install -r documentation/requirements.txt
+
+3. Start packet capture on Pi
+	In a terminal window, run:
+	sudo python3 packet_sniffer.py
+
+4. Star the dashboard
+	In a second terminal window, run:
+	sudo python3 ids_dashboard.py
+	
+	And visit the dashboard in your browser at:
+	https://<your_pi_ip>:5000 (to find your Pi's IP, run hostname -I)
+
+5. *Optional* Use tcpdump, ping, netcat, etc. to simulate suspicious traffic
+	From your laptop, run:
+	ping <your_pi_ip> (ICMP traffic)
+	nc -vz <your_pi_ip> 23 (traffic on Port 23, marked as suspicious, must have netcat installed)
